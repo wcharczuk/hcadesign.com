@@ -16,14 +16,10 @@ module.exports = function(grunt) {
             }
         },
 
-        cssmin : {
-            "dist/css/app.min.css" : ["dist/css/app.css"]
-        },
-
         copy : {
             dist : {
                 files : [
-                    { src: "images/**", dest : "dist/" }
+                    { src: "images/*", dest : "dist/", filter: 'isFile' }
                 ]
             }
         },
@@ -49,14 +45,13 @@ module.exports = function(grunt) {
     });
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-processhtml');
     grunt.loadNpmTasks('grunt-aws');
 
     grunt.registerTask(
         'build',
         'compiles all source, minifies css, copies to ./dist',
-        [ "clean:build", "cssmin", "processhtml:dist", "copy:dist" ]
+        [ "clean:build", "processhtml:dist", "copy:dist" ]
     );
 
     grunt.registerTask(
