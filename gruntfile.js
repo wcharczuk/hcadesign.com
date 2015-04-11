@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 
         cssmin : {
             "dist/css/app.min.css" : ["dist/css/app.css"]
-        }
+        },
 
         copy : {
             dist : {
@@ -64,5 +64,5 @@ module.exports = function(grunt) {
         "deploys to s3",
         [ "s3:dist" ]
     );
-});
+};
 
